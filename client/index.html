@@ -8,7 +8,24 @@
 </head>
 <body>
   <h1>Welcome to Our Platform</h1>
-  <a href="login.html" class="btn">Login</a>
-  <a href="signup.html" class="btn">Sign Up</a>
+  <button id="logoutButton">Logout</button>
+
+  <script>
+    // Simulate an authentication status check
+    let isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+
+    // Redirect to login page if not authenticated
+    if (!isAuthenticated) {
+      alert("You are not authenticated. Redirecting to login...");
+      window.location.href = "login.html";
+    }
+
+    // Logout button functionality
+    document.getElementById("logoutButton").addEventListener("click", () => {
+      localStorage.setItem("isAuthenticated", "false"); // Clear authentication
+      alert("You have been logged out.");
+      window.location.href = "login.html"; // Redirect to login page
+    });
+  </script>
 </body>
 </html>
